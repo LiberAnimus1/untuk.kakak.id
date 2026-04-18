@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>For You🎵</title>
+<title>For You, Kak Maria 🎵</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -481,7 +481,7 @@
   <div class="login-wrap">
     <div class="login-logo fade-in">
       <div class="mono">Private Access</div>
-      <h1>For You<br></h1>
+      <h1>For You,<br>Maria.</h1>
       <div class="tagline">Hanya untuk yang tahu namanya ✦</div>
     </div>
 
@@ -527,36 +527,19 @@
       <div class="hero-sub">Lagu-lagu yang ngingetin aku ke Kakak ✦</div>
     </div>
 
-    <!-- NOW PLAYING -->
-    <div class="now-playing" id="now-playing">
-      <div class="np-label">
-        <span class="np-dot"></span>
+    <!-- SPOTIFY EMBED PLAYER -->
+    <div style="padding:0 1.5rem 1rem;">
+      <div style="font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;animation:blink 1.5s ease infinite;"></span>
         Now Playing
       </div>
-      <div class="np-track">
-        <div class="np-cover" id="np-cover">🎵</div>
-        <div class="np-info">
-          <div class="np-name" id="np-name">Pilih lagu dulu...</div>
-          <div class="np-artist" id="np-artist">Tap lagu di bawah</div>
-        </div>
-      </div>
-      <div class="np-controls">
-        <button class="np-btn" onclick="prevTrack()">
-          <svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8v16M5 19V5h2v14H5z"/></svg>
-        </button>
-        <button class="np-btn play" id="play-btn" onclick="togglePlay()">
-          <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <button class="np-btn" onclick="nextTrack()">
-          <svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8V4M19 5v14h-2V5h2z"/></svg>
-        </button>
-      </div>
-      <div class="np-progress">
-        <span class="np-time" id="cur-time">0:00</span>
-        <div class="np-bar" id="prog-bar" onclick="seekTrack(event)">
-          <div class="np-fill" id="prog-fill" style="width:0%"></div>
-        </div>
-        <span class="np-time" id="dur-time">0:00</span>
+      <div id="spotify-embed" style="border-radius:12px;overflow:hidden;">
+        <iframe id="spotify-iframe"
+          style="border-radius:12px;width:100%;height:152px;border:none;"
+          src="https://open.spotify.com/embed/track/64004K6OpNt3gI3LtXYC7n?utm_source=generator&theme=0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
       </div>
     </div>
 
@@ -564,7 +547,7 @@
     <div class="section">
       <div class="section-header">
         <span class="section-title">Tracklist</span>
-        <span class="section-count" id="track-count">3 lagu</span>
+        <span class="section-count">3 lagu</span>
       </div>
       <div class="playlist" id="playlist-items"></div>
     </div>
@@ -591,7 +574,7 @@
         <p>Jujur, ini perasaan yang kupendam sampai <span class="letter-highlight">storage di otakku rasanya udah hampir 100%</span>, jadi harus ada yang di-dumping biar nggak crash, hehe.</p>
         <p>Aku confess bukan buat ngajak pacaran sekarang, karena aku tahu kita berdua punya mimpi yang lagi dikejar <span class="letter-highlight">(aku mau fokus LKS dan tembus kuliah/kedinasan nanti)</span>. Aku cuma pengen jujur sama Kakak dan sama diri sendiri.</p>
         <p>Harapanku sederhana kok, Kak. Aku pengen kita bisa <span class="letter-highlight">ngobrol lebih asik, tukar cerita, dan kenal Kakak lebih dalam</span> tanpa perlu ada yang ditutup-tutupin lagi.</p>
-        <p>Maaf ya cuma bisa lewat web, soalnya kalau ketemu langsung, <span class="letter-highlight">sistemku suka mendadak nge-lag / error kalau deket Kakak.</span> oh iya kak,amaf ya kak kalo misalnya papasan saya gak pernah nyapa/senyum, mata saya mines kak(kadang baru ngehnya kalo udah lewat agak jauh),Hihihi.</p>
+        <p>Maaf ya cuma bisa lewat web, soalnya kalau ketemu langsung, <span class="letter-highlight">sistemku suka mendadak nge-lag / error kalau deket Kakak.</span> Hihihi.</p>
       </div>
     </div>
 
@@ -619,56 +602,27 @@
 <script>
 // ===== DATA PLAYLIST =====
 const tracks = [
-  {emoji:'🌸',name:'Terlalu Lama',artist:'Viera',note:'Ini relate banget sama perasaan aku',spotify:'https://open.spotify.com/track/64004K6OpNt3gI3LtXYC7n'},
-  {emoji:'💫',name:'I Wish You Were Mine',artist:'Loving Caliber',note:'Dengerin ini sambil mikirin Kakak',spotify:'https://open.spotify.com/track/4SwZGwJIUM1l3o4ExTxWt1'},
-  {emoji:'🌊',name:'Karna Su Sayang',artist:'Near',note:'Yang ini buat Kak, beneran',spotify:'https://open.spotify.com/album/0IxEYwoAExmYK7GbNsBuvb'},
+  {emoji:'🌸',name:'Terlalu Lama',artist:'Viera',note:'Ini relate banget sama perasaan aku',embedId:'track/64004K6OpNt3gI3LtXYC7n'},
+  {emoji:'💫',name:'I Wish You Were Mine',artist:'Loving Caliber',note:'Dengerin ini sambil mikirin Kakak',embedId:'track/4SwZGwJIUM1l3o4ExTxWt1'},
+  {emoji:'🌊',name:'Karna Su Sayang',artist:'Near',note:'Yang ini buat Kak, beneran',embedId:'album/0IxEYwoAExmYK7GbNsBuvb'},
 ];
 
-// ===== AUDIO ENGINE =====
-const audio = new Audio();
-let currentTrack = -1;
-let isPlaying = false;
-
-function fmtTime(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+(s%60).toString().padStart(2,'0')}
-
-// Update progress bar dari audio real
-audio.addEventListener('timeupdate',()=>{
-  const pct=audio.duration?((audio.currentTime/audio.duration)*100):0;
-  document.getElementById('prog-fill').style.width=pct+'%';
-  document.getElementById('cur-time').textContent=fmtTime(audio.currentTime);
-});
-audio.addEventListener('loadedmetadata',()=>{
-  document.getElementById('dur-time').textContent=fmtTime(audio.duration);
-});
-audio.addEventListener('ended',()=>nextTrack());
-audio.addEventListener('error',()=>{
-  document.getElementById('np-artist').textContent='⚠️ File tidak ditemukan — cek nama file .mp3 nya ya!';
-});
+// ===== SPOTIFY EMBED ENGINE =====
+let currentTrack = 0;
 
 function renderPlaylist(){
   const c=document.getElementById('playlist-items');
   c.innerHTML=tracks.map((t,i)=>`
-    <div class="track-item" id="ti-${i}" onclick="playTrack(${i})">
-      <span class="track-num" id="tn-${i}">${i+1}</span>
+    <div class="track-item${i===0?' playing':''}" id="ti-${i}" onclick="playTrack(${i})">
+      <span class="track-num" id="tn-${i}">${i===0?'<div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>':i+1}</span>
       <div class="track-cover">${t.emoji}</div>
       <div class="track-info">
         <div class="track-name">${t.name}</div>
         <div class="track-artist">${t.artist}</div>
       </div>
       <span class="track-tag">▶ NOW</span>
-      <span class="track-dur" id="td-${i}">—:——</span>
     </div>
   `).join('');
-
-  // Preload durasi tiap track buat ditampilin di list
-  tracks.forEach((t,i)=>{
-    const tmp=new Audio();
-    tmp.src=t.file;
-    tmp.addEventListener('loadedmetadata',()=>{
-      const el=document.getElementById('td-'+i);
-      if(el)el.textContent=fmtTime(tmp.duration);
-    });
-  });
 }
 
 function playTrack(i){
@@ -678,68 +632,13 @@ function playTrack(i){
   currentTrack=i;
   const t=tracks[i];
 
-  document.getElementById('np-cover').textContent=t.emoji;
-  document.getElementById('np-name').textContent=t.name;
-  document.getElementById('np-artist').textContent='🎵 Membuka Spotify...';
-  document.getElementById('cur-time').textContent='0:00';
-  document.getElementById('dur-time').textContent='—:——';
-  document.getElementById('prog-fill').style.width='0%';
+  // Ganti Spotify embed
+  const iframe=document.getElementById('spotify-iframe');
+  iframe.src=`https://open.spotify.com/embed/${t.embedId}?utm_source=generator&theme=0`;
 
   document.getElementById('ti-'+i).classList.add('playing');
   document.getElementById('tn-'+i).innerHTML='<div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>';
-
-  isPlaying=true;
-  updatePlayBtn();
   document.getElementById('ti-'+i).scrollIntoView({behavior:'smooth',block:'nearest'});
-
-  setTimeout(()=>{
-    document.getElementById('np-artist').textContent=t.artist+' • '+t.note;
-  },1500);
-
-  window.open(t.spotify,'_blank');
-}
-
-function togglePlay(){
-  if(currentTrack<0){playTrack(0);return}
-  if(audio.paused){
-    audio.play().catch(()=>{});
-    isPlaying=true;
-    // Restore eq bars
-    const tn=document.getElementById('tn-'+currentTrack);
-    if(tn)tn.innerHTML='<div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>';
-  }else{
-    audio.pause();
-    isPlaying=false;
-    // Restore number
-    const tn=document.getElementById('tn-'+currentTrack);
-    if(tn)tn.innerHTML=currentTrack+1;
-  }
-  updatePlayBtn();
-}
-
-function updatePlayBtn(){
-  const icon=document.getElementById('play-icon');
-  icon.innerHTML=isPlaying
-    ?'<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
-    :'<path d="M8 5v14l11-7z"/>';
-}
-
-function seekTrack(e){
-  if(currentTrack<0||!audio.duration)return;
-  const bar=document.getElementById('prog-bar');
-  const r=bar.getBoundingClientRect();
-  const pct=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
-  audio.currentTime=pct*audio.duration;
-}
-
-function nextTrack(){
-  const n=(currentTrack+1)%tracks.length;
-  playTrack(n);
-}
-function prevTrack(){
-  if(audio.currentTime>3){audio.currentTime=0;return}
-  const n=(currentTrack-1+tracks.length)%tracks.length;
-  playTrack(n);
 }
 
 // ===== LOGIN =====
